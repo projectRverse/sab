@@ -1,6 +1,6 @@
 -- ======================================================================
 -- TITLE: SAB PIE LOADER V2 NEW
--- UI LIBRARY: Fluent UI Library
+-- UI LIBRARY: Fluent UI Library (Mobile Friendly + Scrollable)
 -- ======================================================================
 
 -- 1. Load Fluent Library & Addons
@@ -8,58 +8,59 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
--- 2. Buat Window Utama
+-- 2. Create Main Window
 local Window = Fluent:CreateWindow({
     Title = "SAB PIE LOADER V2 NEW",
     SubTitle = "by SAB PIE Team",
-    TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
+    TabWidth = 150,
+    Size = UDim2.fromOffset(540, 380), -- Size adjusted for better scrollability on mobile
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
--- 3. Membuat Tab Menu (Window 1, 2, 3, & Settings)
+-- 3. Create Tabs
 local Tabs = {
     SAB = Window:AddTab({ Title = "BEST PIE SAB", Icon = "flame" }),
     Duel = Window:AddTab({ Title = "BEST DUEL", Icon = "swords" }),
     Misc = Window:AddTab({ Title = "MISC", Icon = "box" }),
-    Settings = Window:AddTab({ Title = "Settings & Info", Icon = "settings" })
+    Settings = Window:AddTab({ Title = "Settings & Community", Icon = "settings" })
 }
 
 ----------------------------------------------------------------------
--- DISCORD INFORMATION & INVITE SECTION
+-- MOBILE FLOATING TOGGLE BUTTON (LOGO "P")
 ----------------------------------------------------------------------
-local DiscordLink = "https://discord.gg/RTDXRjfner"
+local ScreenGui = Instance.new("ScreenGui")
+local ToggleButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
 
-for _, Tab in pairs({Tabs.SAB, Tabs.Duel, Tabs.Misc}) do
-    Tab:AddParagraph({
-        Title = "Join Our Community!",
-        Content = "Join our discord for more script:\n" .. DiscordLink
-    })
-    Tab:AddButton({
-        Title = "Copy Discord Invite Link",
-        Description = "Klik untuk menyalin link Discord ke clipboard",
-        Callback = function()
-            if setclipboard then
-                setclipboard(DiscordLink)
-                Fluent:Notify({
-                    Title = "Discord Link",
-                    Content = "Link Discord berhasil disalin!",
-                    Duration = 3
-                })
-            else
-                Fluent:Notify({
-                    Title = "Error",
-                    Content = "Fitur setclipboard tidak didukung oleh eksekutor kamu.",
-                    Duration = 3
-                })
-            end
-        end
-    })
-end
+ScreenGui.Name = "SABPieToggleGui"
+ScreenGui.Parent = (game:GetService("CoreGui"):FindFirstChild("RobloxGui") or game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+ScreenGui.ResetOnSpawn = false
+
+ToggleButton.Name = "ToggleButton"
+ToggleButton.Parent = ScreenGui
+ToggleButton.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+ToggleButton.Position = UDim2.new(0.05, 0, 0.2, 0)
+ToggleButton.Size = UDim2.new(0, 50, 0, 50)
+ToggleButton.Font = Enum.Font.SourceSansBold
+ToggleButton.Text = "P"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleButton.TextSize = 28
+ToggleButton.Active = true
+ToggleButton.Draggable = true -- Allows mobile users to drag the button around
+
+UICorner.CornerRadius = UDim.new(0.5, 0) -- Circle shape
+UICorner.Parent = ToggleButton
+
+-- Toggle UI visibility when clicking the "P" button
+ToggleButton.MouseButton1Click:Connect(function()
+    if Window then
+        Window:Minimize()
+    end
+end)
 
 ----------------------------------------------------------------------
--- WINDOW 1: BEST PIE SAB SCRIPT
+-- TAB 1: BEST PIE SAB SCRIPT
 ----------------------------------------------------------------------
 Tabs.SAB:AddSection("Script List")
 
@@ -86,7 +87,7 @@ table.sort(SAB_List)
 local SelectedSAB = SAB_List[1]
 
 local SABDropdown = Tabs.SAB:AddDropdown("SABSelector", {
-    Title = "Pilih SAB Script",
+    Title = "Select SAB Script",
     Values = SAB_List,
     Multi = false,
     Default = 1,
@@ -98,7 +99,7 @@ end)
 
 Tabs.SAB:AddButton({
     Title = "Execute Selected SAB Script",
-    Description = "Menjalankan script SAB yang dipilih dari menu di atas",
+    Description = "Run the chosen SAB script from the dropdown above",
     Callback = function()
         if SAB_Scripts[SelectedSAB] then
             Fluent:Notify({
@@ -114,7 +115,7 @@ Tabs.SAB:AddButton({
 })
 
 ----------------------------------------------------------------------
--- WINDOW 2: BEST DUEL SCRIPT
+-- TAB 2: BEST DUEL SCRIPT
 ----------------------------------------------------------------------
 Tabs.Duel:AddSection("Script List")
 
@@ -138,7 +139,7 @@ table.sort(Duel_List)
 local SelectedDuel = Duel_List[1]
 
 local DuelDropdown = Tabs.Duel:AddDropdown("DuelSelector", {
-    Title = "Pilih Duel Script",
+    Title = "Select Duel Script",
     Values = Duel_List,
     Multi = false,
     Default = 1,
@@ -150,7 +151,7 @@ end)
 
 Tabs.Duel:AddButton({
     Title = "Execute Selected Duel Script",
-    Description = "Menjalankan script Duel yang dipilih dari menu di atas",
+    Description = "Run the chosen Duel script from the dropdown above",
     Callback = function()
         if Duel_Scripts[SelectedDuel] then
             Fluent:Notify({
@@ -166,7 +167,7 @@ Tabs.Duel:AddButton({
 })
 
 ----------------------------------------------------------------------
--- WINDOW 3: MISC SCRIPT
+-- TAB 3: MISC SCRIPT
 ----------------------------------------------------------------------
 Tabs.Misc:AddSection("Script List")
 
@@ -201,8 +202,39 @@ Tabs.Misc:AddButton({
 })
 
 ----------------------------------------------------------------------
--- SETTINGS & CONFIG SYSTEM
+-- TAB 4: SETTINGS & COMMUNITY DISCORD
 ----------------------------------------------------------------------
+local DiscordLink = "https://discord.gg/RTDXRjfner"
+
+Tabs.Settings:AddSection("Community")
+
+Tabs.Settings:AddParagraph({
+    Title = "Join Our Community!",
+    Content = "Join our Discord server for more scripts, updates, and support:\n" .. DiscordLink
+})
+
+Tabs.Settings:AddButton({
+    Title = "Copy Discord Invite Link",
+    Description = "Click to copy the Discord link to your clipboard",
+    Callback = function()
+        if setclipboard then
+            setclipboard(DiscordLink)
+            Fluent:Notify({
+                Title = "Discord Link",
+                Content = "Discord invite link copied to clipboard!",
+                Duration = 3
+            })
+        else
+            Fluent:Notify({
+                Title = "Error",
+                Content = "Your executor does not support clipboard copying.",
+                Duration = 3
+            })
+        end
+    end
+})
+
+-- UI Library Config & Settings Manager
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
@@ -213,10 +245,10 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 
 Window:SelectTab(1)
 
--- Notification Welcome
+-- Welcome Notification
 Fluent:Notify({
     Title = "SAB PIE LOADER V2 NEW",
-    Content = "Loader berhasil dimuat! Join Discord kami untuk update.",
+    Content = "Loader loaded successfully! Click the 'P' button to open/close menu.",
     Duration = 5
 })
 
