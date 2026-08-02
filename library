@@ -61,11 +61,12 @@ end)
 Tabs.SAB:AddSection("Script List")
 
 local SAB_Scripts = {
-    ["Heroz Undetect Full Features"] = https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb
+    ["Heroz Undetect Full Features"] = "https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb"
     ["Gift Code Snipe Best For AA"] = "https://pastebin.com/raw/h15sLLSX",
+    ["Empty Map Finder"] = "https://pastebin.com/raw/1CeeY67A"
     ["Irish Hub V1.1"] = "https://pastebin.com/raw/HW6U98FR",
     ["ViolanceHub.CC"] = "https://pastebin.com/raw/c3U9pqfn",
-    ["Brainrot Spawner V1"] = "https://pastebin.com/raw/Q80jRuDD",
+    ["Brainrot Spawner V1"] = "https://raw.githubusercontent.com/projectRverse/spwn/refs/heads/main/newspnwr",
     ["Brainrot Spanwer V2"] = "https://pastebin.com/raw/PrSqDkMf",
     ["Auto Buy Carpet"] = "https://pastebin.com/raw/1vMhQL0U",
     ["Auto Grab V1"] = "https://pastebin.com/raw/Ncrn0NWs",
