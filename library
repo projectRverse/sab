@@ -62,6 +62,7 @@ Tabs.SAB:AddSection("Script List")
 
 local SAB_Scripts = {
     ["Heroz Undetect Full Features"] = "https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb",
+    ["Auto RNG machine beta"] = "https://pastebin.com/raw/Am0pxziv", 
     ["Best ALL hub"] = "https://pastebin.com/raw/90A03L8y",
     ["Gamma Auto Gift Code"] = "https://pastebin.com/raw/6DJnLV4H",
     ["Gift Code Snipe v1"] = "https://pastebin.com/raw/h15sLLSX",
