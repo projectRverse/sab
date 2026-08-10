@@ -61,7 +61,7 @@ end)
 Tabs.SAB:AddSection("Script List")
 
 local SAB_Scripts = {
-    ["Auto collect Honey (event)"] = "https://pastefy.app/wdEAoCOz/raw", 
+    ["Auto collect Honey (event)"] = "https://raw.githubusercontent.com/projectRverse/sab/refs/heads/main/library", 
     ["Heroz Undetect Full Features"] = "https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb",
     ["Auto RNG machine beta"] = "https://pastebin.com/raw/vjAwx1jd",
     ["Chilin Auto Joiner"] = "https://pastebin.com/raw/Qv19kXGt",
