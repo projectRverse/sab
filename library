@@ -61,9 +61,9 @@ end)
 Tabs.SAB:AddSection("Script List")
 
 local SAB_Scripts = {
-    ["Auto collect Honey (event)"] = "https://raw.githubusercontent.com/UniversalScriptHub/rayfieldGuiSabMain/refs/heads/main/gui", 
+    ["Auto collect Honey (event)"] = "https://pastebin.com/raw/XUtWqmCf", 
     ["Heroz Undetect Full Features"] = "https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb",
-    ["Auto RNG machine beta"] = "https://pastebin.com/raw/vjAwx1jd",
+    ["Auto RNG machine beta"] = "https://pastebin.com/raw/MpQuivXm",
     ["Chilin Auto Joiner"] = "https://pastebin.com/raw/Qv19kXGt",
     ["Best ALL hub"] = "https://pastebin.com/raw/90A03L8y",
     ["Gamma Auto Gift Code"] = "https://pastebin.com/raw/6DJnLV4H",
