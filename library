@@ -61,7 +61,10 @@ end)
 Tabs.SAB:AddSection("Script List")
 
 local SAB_Scripts = {
+    ["Working Speed Steal"] = "https://pastefy.app/mhtVpppi/raw",
     ["Auto collect Honey (event)"] = "https://pastebin.com/raw/XUtWqmCf", 
+    ["Auto Buy Bee Shop sniper (event)"] = "https://pastefy.app/FLOSU5Pk/raw", 
+    ["Aimbot Tool"] = "https://pastefy.app/WwSnG8bL/raw",
     ["Heroz Undetect Full Features"] = "https://raw.githubusercontent.com/projectRverse/heroz/refs/heads/main/herozsb",
     ["Auto RNG machine beta"] = "https://pastebin.com/raw/vjAwx1jd",
     ["Chilin Auto Joiner"] = "https://pastebin.com/raw/Qv19kXGt",
